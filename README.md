@@ -1,6 +1,6 @@
 # Acme People Employee Management Portal
 
-A production-oriented, beginner-friendly three-tier employee portal built with Java 21, Spring Boot 3, PostgreSQL, Nginx, HTML, CSS, and vanilla JavaScript.
+A production-oriented, beginner-friendly three-tier employee portal built with Java 21, Spring Boot 3, PostgreSQL, Nginx, HTML, CSS, and vanilla JavaScript..
 
 ## Architecture
 
