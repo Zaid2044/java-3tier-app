@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acme People employee management portal">
+    <title>Acme People | Employee Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="/" aria-label="Acme People home">
+                <span class="brand-mark">A</span>
+                <span><strong>Acme</strong><small>People</small></span>
+            </a>
+            <nav aria-label="Primary navigation">
+                <p class="nav-label">Workspace</p>
+                <a class="nav-item active" href="#overview">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm0 7h6v-5H4v5Zm10 0h6v-9h-6v9Zm0-16v5h6V4h-6Z"/></svg>
+                    Overview
+                </a>
+                <a class="nav-item" href="#directory">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3ZM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3Zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5Z"/></svg>
+                    Employees
+                </a>
+                <span class="nav-item muted">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2a3 3 0 0 0 6 0h6a3 3 0 0 0 6 0h2v-5l-3-4ZM6 18.5A1.5 1.5 0 1 1 6 15a1.5 1.5 0 0 1 0 3.5ZM15 15H8.82A3 3 0 0 0 3 15V6h12v9Zm3 3.5a1.5 1.5 0 1 1 0-3.5 1.5 1.5 0 0 1 0 3.5ZM17 12V9.5h2.5l1.96 2.5H17Z"/></svg>
+                    Onboarding
+                    <span class="soon">Soon</span>
+                </span>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="system-status"><span></span> All systems operational</div>
+                <small>Employee Portal v1.0</small>
+            </div>
+        </aside>
+
+        <main>
+            <header class="topbar">
+                <button class="mobile-menu" type="button" aria-label="Toggle navigation">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2Zm0-5h18v-2H3v2Zm0-7v2h18V6H3Z"/></svg>
+                </button>
+                <div class="global-search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15.5 14-1-.79A6.47 6.47 0 1 0 13.21 14l.79 1 5 4.99L20.49 19l-4.99-5Zm-5 0A4.5 4.5 0 1 1 10.5 5a4.5 4.5 0 0 1 0 9Z"/></svg>
+                    <input id="globalSearch" type="search" placeholder="Search employees..." aria-label="Search employees">
+                    <kbd>/</kbd>
+                </div>
+                <div class="profile">
+                    <button class="icon-button" type="button" aria-label="Notifications">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.01 2.01 0 0 0 2-2h-4a2.01 2.01 0 0 0 2 2Zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2Z"/></svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <span class="avatar">JD</span>
+                    <span class="profile-copy"><strong>Jordan Davis</strong><small>HR Administrator</small></span>
+                </div>
+            </header>
+
+            <div class="content">
+                <section class="page-heading" id="overview">
+                    <div>
+                        <p class="eyebrow">People operations</p>
+                        <h1>Workforce Overview</h1>
+                        <p>Monitor your organization and manage employee records.</p>
+                    </div>
+                    <button class="primary-button" id="addEmployeeButton" type="button">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"/></svg>
+                        Add employee
+                    </button>
+                </section>
+
+                <section class="metrics-grid" aria-label="Workforce metrics">
+                    <article class="metric-card">
+                        <div class="metric-icon blue"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3ZM8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3Zm0 2c-2.34 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.34 13 8 13Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.66-3.5-7-3.5Z"/></svg></div>
+                        <div><span>Total employees</span><strong id="totalEmployees">--</strong><small>Active workforce</small></div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-icon cyan"><svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12ZM6 19H4v-2h2v2Zm0-4H4v-2h2v2Zm0-4H4V9h2v2Zm0-4H4V5h2v2Zm4 12H8v-2h2v2Zm0-4H8v-2h2v2Zm0-4H8V9h2v2Zm0-4H8V5h2v2Zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10Zm-2-8h-2v2h2v-2Zm0 4h-2v2h2v-2Z"/></svg></div>
+                        <div><span>Departments</span><strong id="departmentCount">--</strong><small>Active business units</small></div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-icon purple"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4Zm1 17.93V20h-2v-1.07c-1.73-.36-3-1.53-3-2.93h2c0 .54.78 1 2 1s2-.46 2-1c0-.64-.56-.86-2.4-1.32C9.82 14.23 8 13.55 8 11.5c0-1.4 1.27-2.57 3-2.93V7.5h2v1.07c1.73.36 3 1.53 3 2.93h-2c0-.54-.78-1-2-1s-2 .46-2 1c0 .64.56.86 2.4 1.32 1.78.45 3.6 1.13 3.6 3.18 0 1.4-1.27 2.57-3 2.93Z"/></svg></div>
+                        <div><span>Average salary</span><strong id="averageSalary">--</strong><small>Across all employees</small></div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-icon green"><svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6Zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z"/></svg></div>
+                        <div><span>New employees</span><strong id="newEmployees">--</strong><small>Joined in last 30 days</small></div>
+                    </article>
+                </section>
+
+                <section class="directory-card" id="directory">
+                    <div class="directory-header">
+                        <div>
+                            <h2>Employee Directory</h2>
+                            <p>View and manage your organization’s employee records.</p>
+                        </div>
+                        <div class="directory-actions">
+                            <label class="table-search">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15.5 14-1-.79A6.47 6.47 0 1 0 13.21 14l.79 1 5 4.99L20.49 19l-4.99-5Zm-5 0A4.5 4.5 0 1 1 10.5 5a4.5 4.5 0 0 1 0 9Z"/></svg>
+                                <input id="tableSearch" type="search" placeholder="Search directory">
+                            </label>
+                            <select id="departmentFilter" aria-label="Filter by department">
+                                <option value="">All departments</option>
+                                <option value="ENGINEERING">Engineering</option>
+                                <option value="HR">HR</option>
+                                <option value="FINANCE">Finance</option>
+                                <option value="OPERATIONS">Operations</option>
+                                <option value="MARKETING">Marketing</option>
+                                <option value="SALES">Sales</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><button class="sort-button" data-sort="name">Employee name <span>↕</span></button></th>
+                                    <th><button class="sort-button" data-sort="email">Email <span>↕</span></button></th>
+                                    <th><button class="sort-button" data-sort="department">Department <span>↕</span></button></th>
+                                    <th><button class="sort-button" data-sort="salary">Salary <span>↕</span></button></th>
+                                    <th><button class="sort-button" data-sort="updatedAt">Last updated <span>↓</span></button></th>
+                                    <th class="actions-column">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTableBody"></tbody>
+                        </table>
+                        <div class="loading-state" id="loadingState"><span class="spinner"></span> Loading employees...</div>
+                        <div class="empty-state hidden" id="emptyState">
+                            <div class="empty-icon">⌕</div>
+                            <h3>No employees found</h3>
+                            <p>Try adjusting your search or add a new employee.</p>
+                        </div>
+                    </div>
+
+                    <footer class="pagination">
+                        <p id="paginationSummary">Showing 0 employees</p>
+                        <div>
+                            <button id="previousPage" class="page-button" type="button" aria-label="Previous page">‹</button>
+                            <span id="pageNumbers"></span>
+                            <button id="nextPage" class="page-button" type="button" aria-label="Next page">›</button>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <dialog id="employeeDialog" class="modal">
+        <form id="employeeForm" novalidate>
+            <div class="modal-header">
+                <div><p class="eyebrow">Employee record</p><h2 id="employeeDialogTitle">Add employee</h2></div>
+                <button class="close-button" type="button" data-close-dialog aria-label="Close">×</button>
+            </div>
+            <input type="hidden" id="employeeId">
+            <div class="form-grid">
+                <label class="full-width">Full name
+                    <input id="employeeName" name="name" type="text" maxlength="120" autocomplete="name" required placeholder="e.g. Morgan Lee">
+                    <small class="field-error" data-error-for="name"></small>
+                </label>
+                <label class="full-width">Work email
+                    <input id="employeeEmail" name="email" type="email" maxlength="180" autocomplete="email" required placeholder="morgan.lee@company.com">
+                    <small class="field-error" data-error-for="email"></small>
+                </label>
+                <label>Department
+                    <select id="employeeDepartment" name="department" required>
+                        <option value="">Select department</option>
+                        <option value="ENGINEERING">Engineering</option>
+                        <option value="HR">HR</option>
+                        <option value="FINANCE">Finance</option>
+                        <option value="OPERATIONS">Operations</option>
+                        <option value="MARKETING">Marketing</option>
+                        <option value="SALES">Sales</option>
+                    </select>
+                    <small class="field-error" data-error-for="department"></small>
+                </label>
+                <label>Annual salary
+                    <div class="money-input"><span>$</span><input id="employeeSalary" name="salary" type="number" min="0" max="9999999999.99" step="0.01" required placeholder="95000"></div>
+                    <small class="field-error" data-error-for="salary"></small>
+                </label>
+            </div>
+            <div class="modal-actions">
+                <button class="secondary-button" type="button" data-close-dialog>Cancel</button>
+                <button class="primary-button" id="saveEmployeeButton" type="submit">Save employee</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="deleteDialog" class="modal delete-modal">
+        <div class="danger-icon">!</div>
+        <h2>Delete employee?</h2>
+        <p>This will permanently remove <strong id="deleteEmployeeName"></strong> from the directory. This action cannot be undone.</p>
+        <div class="modal-actions">
+            <button class="secondary-button" type="button" data-close-delete>Cancel</button>
+            <button class="danger-button" id="confirmDeleteButton" type="button">Delete employee</button>
+        </div>
+    </dialog>
+
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+</body>
+</html>

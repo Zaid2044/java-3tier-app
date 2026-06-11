@@ -1,0 +1,78 @@
+name: employee-portal
+
+services:
+  database:
+    image: postgres:17.5-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-employee_portal}
+      POSTGRES_USER: ${POSTGRES_USER:-employee_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-employee_secret}
+    volumes:
+      - employee_data:/var/lib/postgresql/data
+    networks:
+      - employee_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    security_opt:
+      - no-new-privileges:true
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DB_URL: jdbc:postgresql://database:5432/${POSTGRES_DB:-employee_portal}
+      DB_USERNAME: ${POSTGRES_USER:-employee_app}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-employee_secret}
+      DB_POOL_SIZE: ${DB_POOL_SIZE:-10}
+      DEMO_DATA_ENABLED: ${DEMO_DATA_ENABLED:-true}
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - employee_network
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/health | grep -q '\"status\":\"UP\"'"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 35s
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - employee_network
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/health | grep -q '\"status\":\"UP\"'"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  employee_data:
+    name: employee-portal-data
+
+networks:
+  employee_network:
+    name: employee-portal-network
+    driver: bridge
