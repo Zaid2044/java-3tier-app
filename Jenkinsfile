@@ -112,7 +112,7 @@ pipeline {
                     git(
                         branch: 'main',
                         credentialsId: 'gitops-github',
-                        url: 'https://github.com/<YOUR_GITHUB_USERNAME>/multitier-eks-gitops.git'
+                        url: 'https://github.com/Zaid2044/multitier-eks-gitops.git'
                     )
                 }
             }
@@ -168,7 +168,7 @@ pipeline {
 
                         sh '''
                         git remote set-url origin \
-                        https://${GIT_USER}:${GIT_TOKEN}@github.com/<YOUR_GITHUB_USERNAME>/multitier-eks-gitops.git
+                        https://${GIT_USER}:${GIT_TOKEN}@github.com/Zaid2044/multitier-eks-gitops.git
 
                         git push origin main
                         '''
