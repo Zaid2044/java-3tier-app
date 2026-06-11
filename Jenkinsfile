@@ -123,11 +123,8 @@ pipeline {
                 dir('gitops') {
 
                     sh """
-                    sed -i '/backend:/,/tag:/s/tag:.*/    tag: ${GIT_SHA}/' \
-                    helm/java-app/values.yaml
-
-                    sed -i '/frontend:/,/tag:/s/tag:.*/    tag: ${GIT_SHA}/' \
-                    helm/java-app/values.yaml
+                    yq -i '.backend.image.tag = strenv(GIT_SHA)' helm/java-app/values.yaml
+                    yq -i '.frontend.image.tag = strenv(GIT_SHA)' helm/java-app/values.yaml
                     """
 
                     sh '''
