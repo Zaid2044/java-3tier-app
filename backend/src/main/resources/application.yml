@@ -40,3 +40,17 @@ spring.lifecycle.timeout-per-shutdown-phase: 20s
 
 app:
   demo-data-enabled: ${DEMO_DATA_ENABLED:false}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+  endpoint:
+    health:
+      show-details: always
+
+  metrics:
+    tags:
+      application: employee-portal
