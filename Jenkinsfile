@@ -179,5 +179,6 @@ pipeline {
         always {
             sh 'docker image prune -af || true'
         }
+ 
     }
 }
